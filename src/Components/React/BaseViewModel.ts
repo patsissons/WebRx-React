@@ -1,6 +1,6 @@
 import { Observable, IDisposable } from 'rx';
 
-import { wx } from '../../WebRx';
+import { property, command, whenAny, getObservable } from '../../WebRx';
 import { Logging, Alert, SubMan } from '../../Utils';
 import { Manager } from '../../Routing/RouteManager';
 
@@ -28,7 +28,13 @@ export abstract class BaseViewModel implements IDisposable {
   private isLoggingMemberObservables = false;
 
   protected subs = new SubMan();
-  public stateChanged = wx.command();
+  public stateChanged = command();
+
+  // these are WebRx helper functions (so you don't need to import them every time)
+  protected property = property;
+  protected command = command;
+  protected getObservable = getObservable;
+  protected whenAny = whenAny;
 
   // -----------------------------------------
   // These are special methods that handle the
