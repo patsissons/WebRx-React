@@ -697,10 +697,6 @@ gulp.task('deploy', (done) => {
 gulp.task('deploy:docs', [ 'clean:docs' ], () => {
   const webpackConfig = getWebpackConfig(config.builds.release, true, false);
 
-  // configure the deployed public path (allow overrides for local test bundles)
-  // see: https://stackoverflow.com/a/34133809/2789877
-  webpackConfig.output.publicPath = config.publicPath || 'https://marinels.github.io/webrx-react/';
-
   // we don't want to emit source maps
   delete webpackConfig.devtool;
 
@@ -715,6 +711,12 @@ gulp.task('deploy:docs', [ 'clean:docs' ], () => {
     path: path.join(__dirname, 'docs'),
     filename: 'app.js',
   };
+
+  // configure the deployed public path (allow overrides for local test bundles)
+  // see: https://stackoverflow.com/a/34133809/2789877
+  webpackConfig.output.publicPath = config.publicPath === options.default.publicPath ?
+    'https://marinels.github.io/webrx-react/' :
+    config.publicPath;
 
   // we aren't using ExtractTextPlugin so just use the normal loaders
   webpackConfig.module.rules.splice(0, 2,
