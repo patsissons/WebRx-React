@@ -15,6 +15,10 @@ This framework can be imported into another TypeScript project (recommended appr
 [![Dependency Status](https://img.shields.io/versioneye/d/nodejs/webrx-react.svg)](https://www.versioneye.com/nodejs/webrx-react)
 [![tslint](https://img.shields.io/badge/tslint-strict-117D6B.svg)](https://github.com/unional/tslint-config-unional/blob/master/style-strict.md)
 
+## webrx-react Demo
+
+View the [Demo](https://marinels.github.io/webrx-react/)
+
 ## Quick Start
 
 This framework comes with a built-in demo that can be viewed in the browser. Simply run `npm install && npm run gulp` and browse to [http://localhost:3000/](http://localhost:3000/) to play around with the components built into this framework.
